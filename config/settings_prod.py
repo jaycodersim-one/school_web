@@ -14,7 +14,12 @@ DEBUG = True  # Temporarily set to True for debugging
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-ALLOWED_HOSTS = ['jaycodersim.pythonanywhere.com']
+ALLOWED_HOSTS = [
+    'jaycodersim.pythonanywhere.com',
+    'www.jaycodersim.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1'
+]
 
 # Database
 # Use MySQL on PythonAnywhere
@@ -33,19 +38,19 @@ DATABASES = {
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/jaycodersim/school_web/staticfiles'
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
 # Additional locations of static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend', 'static'),
+    str(BASE_DIR / 'frontend' / 'static'),
 ]
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/jaycodersim/school_web/media'
+MEDIA_ROOT = str(BASE_DIR / 'media')
 
 # Static files storage
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'  # Changed from whitenoise
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Security settings
 SECURE_SSL_REDIRECT = True
