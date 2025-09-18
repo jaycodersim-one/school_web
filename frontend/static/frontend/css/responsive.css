@@ -1,0 +1,29 @@
+/* Responsive styles */
+@media (max-width: 768px) {
+    .carousel-slide {
+        flex: 0 0 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gallery-item {
+        height: 200px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-slide {
+        flex: 0 0 50%;
+        min-width: 50%;
+        max-width: 50%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

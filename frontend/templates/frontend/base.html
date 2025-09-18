@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}School Site{% endblock %} | Brilliant Minds Junior School</title>
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/responsive.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="{% url 'frontend:index' %}" class="school-logo">Brilliant Minds Junior School</a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#parents">Parents</a></li>
+                <li><a href="{% url 'frontend:gallery' %}" class="nav-gallery-link"><i class="gallery-icon">🖼️</i> Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>123 School Street</p>
+                <p>City, Country</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@brilliantminds.edu</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#calendar">School Calendar</a></li>
+                    <li><a href="#news">News & Events</a></li>
+                    <li><a href="#portal">Parent Portal</a></li>
+                    <li><a href="#resources">Learning Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>School Hours</h4>
+                <p>Monday - Friday</p>
+                <p>ECD: 8:00 AM - 2:00 PM</p>
+                <p>Junior: 8:00 AM - 3:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#facebook">Facebook</a></li>
+                    <li><a href="#twitter">Twitter</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'frontend/js/main.js' %}"></script>
+    <script src="{% static 'frontend/js/carousel.js' %}"></script>
+    <script src="{% static 'frontend/js/nav.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
