@@ -9,29 +9,43 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True  # Temporarily set to True for debugging
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', '').split(',')]
+ALLOWED_HOSTS = ['jaycodersim.pythonanywhere.com']
 
 # Database
-# Use PostgreSQL in production
+# Use MySQL on PythonAnywhere
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jaycodersim$school_web',
+        'USER': 'jaycodersim',
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'HOST': 'jaycodersim.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
 # Static files (CSS, JavaScript, Images)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/jaycodersim/school_web/staticfiles'
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend', 'static'),
+]
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/jaycodersim/school_web/media'
+
+# Static files storage
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'  # Changed from whitenoise
 
 # Security settings
 SECURE_SSL_REDIRECT = True
