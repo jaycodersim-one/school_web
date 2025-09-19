@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}School Site{% endblock %} | Brilliant Minds Junior School</title>
+    <title>{% block title %}School Site{% endblock %} | Smart Start Academy</title>
     <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'frontend/css/responsive.css' %}">
     {% block extra_css %}{% endblock %}
@@ -12,19 +12,22 @@
 <body>
     <header class="site-header">
         <nav class="nav-container">
-            <a href="{% url 'frontend:index' %}" class="school-logo">Brilliant Minds Junior School</a>
+            <a href="{% url 'frontend:index' %}" class="school-logo">Smart Start Academy</a>
             <button class="mobile-menu-btn">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            {% url 'frontend:about' as about_url %}
+            {% url 'academics:index' as academics_url %}
+            {% url 'frontend:gallery' as gallery_url %}
             <ul class="nav-menu">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#academics">Academics</a></li>
+                <li><a href="{{ about_url }}" class="{% if request.path == about_url %}active{% endif %}">About Us</a></li>
+                <li><a href="{{ academics_url }}" class="{% if request.path == academics_url %}active{% endif %}">Academics</a></li>
                 <li><a href="#admissions">Admissions</a></li>
                 <li><a href="#activities">Activities</a></li>
                 <li><a href="#parents">Parents</a></li>
-                <li><a href="{% url 'frontend:gallery' %}" class="nav-gallery-link"><i class="gallery-icon">🖼️</i> Gallery</a></li>
+                <li><a href="{{ gallery_url }}" class="nav-gallery-link {% if request.path == gallery_url %}active{% endif %}"><i class="gallery-icon">🖼️</i> Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -42,7 +45,7 @@
                 <p>123 School Street</p>
                 <p>City, Country</p>
                 <p>Phone: (123) 456-7890</p>
-                <p>Email: info@brilliantminds.edu</p>
+                <p>Email: info@smartstartacademy.edu</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -69,6 +72,9 @@
             </div>
         </div>
     </footer>
+    <div class="footer-bottom">
+        <p>&copy; {% now 'Y' %} 536a6D. All rights reserved.</p>
+    </div>
 
     <script src="{% static 'frontend/js/main.js' %}"></script>
     <script src="{% static 'frontend/js/carousel.js' %}"></script>

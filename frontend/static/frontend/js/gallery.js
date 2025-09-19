@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function() {
             currentIndex = parseInt(this.dataset.index);
             updateModalImage();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            openModal();
         });
     });
 
@@ -68,7 +67,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function closeModal() {
         modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        // restore focus
+        const opener = document.querySelector(`[data-index="${currentIndex}"]`);
+        if (opener) opener.focus();
+    }
+
+    function openModal() {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // focus the close button for accessibility
+        closeBtn.focus();
+        updateNavigationButtons();
     }
 
     function updateNavigationButtons() {

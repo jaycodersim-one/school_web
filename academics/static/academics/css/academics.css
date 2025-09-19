@@ -1,0 +1,54 @@
+/* Minimal, modern styles for the Academics page */
+:root{
+    --acc-primary: #0b2948;
+    --acc-muted: #6b7280;
+    --acc-accent: #2563eb;
+    --bg-light: #fbfbfc;
+    --card-bg: #ffffff;
+    --radius: 10px;
+    --gap: 1rem;
+}
+
+.academics-hero{
+    background: linear-gradient(180deg, rgba(11,41,72,0.03), rgba(11,41,72,0.02));
+    padding: 2rem 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 160px;
+    margin-bottom: 2rem;
+}
+.academics-hero h1{margin:0;font-size:1.8rem;color:var(--acc-primary);width:100%}
+.academics-hero .lead{color:#445;max-width:800px;margin:0.75rem auto 0;text-align:center}
+
+/* ensure the container wrapper inside the hero centers its children */
+.academics-hero .container{ text-align: center; }
+
+/* Make sure the hero content is centered on small screens as well */
+@media (max-width:480px){
+    .academics-hero{padding:1.5rem 0;min-height:120px}
+    .academics-hero h1{font-size:1.4rem}
+    .academics-hero .lead{font-size:.95rem}
+}
+
+.academics-layout{display:grid;grid-template-columns:280px 1fr;gap:2rem;align-items:start;margin-top:1.25rem}
+@media (max-width:900px){.academics-layout{grid-template-columns:1fr}}
+
+.academics-toc{position:sticky;top:96px;padding:1rem;background:transparent}
+.academics-toc ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
+.academics-toc a{color:var(--acc-muted);text-decoration:none;padding:.4rem .6rem;border-radius:8px;display:inline-block}
+.academics-toc a:hover{background:rgba(37,99,235,0.06);color:var(--acc-primary)}
+
+.academics-section{background:var(--card-bg);padding:1.25rem;border-radius:var(--radius);box-shadow:0 8px 24px rgba(12,24,35,0.04);margin-bottom:1rem}
+.academics-section h2{margin:0 0 .5rem 0;color:var(--acc-primary);font-size:1.05rem}
+.academics-section p{color:var(--acc-muted);line-height:1.7}
+.academics-section ul{margin-top:.75rem}
+.academics-section ul li{margin:.35rem 0;color:var(--acc-muted)}
+
+/* subtle anchor link styling */
+.anchor-link{font-size:.95rem;color:var(--acc-accent);text-decoration:none}
+
+/* small helper for content width */
+.academics-content{max-width:820px}

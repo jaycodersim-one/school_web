@@ -38,19 +38,19 @@ DATABASES = {
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+STATIC_ROOT = '/home/jaycodersim/school_web/staticfiles'
 
 # Additional locations of static files
 STATICFILES_DIRS = [
-    str(BASE_DIR / 'frontend' / 'static'),
+    os.path.join(BASE_DIR, 'frontend', 'static'),
 ]
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR / 'media')
+MEDIA_ROOT = '/home/jaycodersim/school_web/media'
 
 # Static files storage
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'  # Changed from whitenoise
 
 # Security settings
 SECURE_SSL_REDIRECT = True

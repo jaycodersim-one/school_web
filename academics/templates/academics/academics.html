@@ -1,0 +1,52 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'academics/css/academics.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="academics-hero">
+    <div class="container" style="text-align: center;">
+        <h1>Academics</h1>
+        <p class="lead">Information about our curriculum, schedules, portals, staff, resources, and student achievements.</p>
+    </div>
+</section>
+
+<section class="academics-page container">
+    <div class="section-grid">
+        <article id="curriculum" class="section-card">
+            <h3>Curriculum and Courses</h3>
+            <p>Age-appropriate curriculum: literacy, numeracy, creative arts, and social-emotional learning across grade levels.</p>
+        </article>
+
+        <article id="calendar" class="section-card">
+            <h3>Academic Calendar and Schedules</h3>
+            <p>Term dates, daily timetables, assessment windows and published schedules each term.</p>
+        </article>
+
+        <article id="portals" class="section-card">
+            <h3>Student and Parent Portals</h3>
+            <p>Secure portals for reports, assignments, communications, and progress tracking.</p>
+        </article>
+
+        <article id="faculty" class="section-card">
+            <h3>Faculty and Staff Information</h3>
+            <p>Profiles of teaching and support staff, qualifications, and professional development initiatives.</p>
+        </article>
+
+        <article id="resources" class="section-card">
+            <h3>Resources and Support</h3>
+            <p>Learning resources, counseling, and inclusive support services for student wellbeing.</p>
+        </article>
+
+        <article id="achievements" class="section-card">
+            <h3>Student Achievements</h3>
+            <p>Celebrating academic, sports, arts and community accomplishments across the school.</p>
+        </article>
+    </div>
+</section>
+
+{% endblock %}

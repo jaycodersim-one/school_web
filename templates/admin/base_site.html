@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ site_title }} | {{ title }}{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'admin/css/admin-overrides.css' %}">
+{{ block.super }}
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="/">Smart Start Academy</a></h1>
+{% endblock %}
+
+{% block nav-global %}
+{{ block.super }}
+{% endblock %}

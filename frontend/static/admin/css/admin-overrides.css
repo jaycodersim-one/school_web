@@ -1,0 +1,64 @@
+/* Modern admin overrides: subtle, clean, and legible */
+:root{
+    --admin-bg: #f6f8fb;
+    --admin-card: #ffffff;
+    --admin-accent: #0b2948; /* match site primary */
+    --admin-muted: #6b7280;
+}
+
+body#django-admin {
+    background: var(--admin-bg);
+}
+
+#header, .module, .dashboard-module {
+    background: var(--admin-card);
+    box-shadow: 0 6px 20px rgba(2,12,27,0.06);
+    border-radius: 10px;
+}
+
+#header { 
+    border: none;
+}
+
+#header h1, #header .container h1 {
+    color: var(--admin-accent) !important;
+}
+
+#header .user-tools a {
+    color: var(--admin-muted);
+}
+
+#content-main .module {
+    padding: 1.25rem;
+}
+
+.dashboard-module h2, .module h2 {
+    color: var(--admin-accent);
+}
+
+/* Tidy up forms */
+.form-row, .field-box {
+    background: transparent;
+}
+
+/* Buttons */
+.button, input[type="submit"], .submit-row input[type="submit"]{
+    background: var(--admin-accent);
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 0.5rem 0.9rem;
+}
+
+/* Links */
+a {
+    color: var(--admin-accent);
+}
+
+/* Make tables more airy */
+#result_list tbody tr:nth-child(odd){
+    background: transparent;
+}
+#result_list thead th{
+    color: var(--admin-muted);
+}

@@ -1,0 +1,73 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <div class="about-hero">
+            <h1>About Smart Start Academy</h1>
+            <p class="lead">We believe every child has a unique spark — our job is to nurture it. At Smart Start Academy we focus on curiosity-driven learning, social-emotional growth, and creating strong foundations for lifelong success.</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>{{ mission }}</p>
+                <p class="card-actions"><a href="#" class="about-card-link">Learn more →</a></p>
+                {% if histories.mission and request.user.is_staff %}
+                <details>
+                    <summary>Recent mission versions</summary>
+                    <ul>
+                        {% for h in histories.mission %}
+                        <li><small>{{ h.created_at }} — {{ h.content|truncatechars:120 }}</small></li>
+                        {% endfor %}
+                    </ul>
+                </details>
+                {% endif %}
+            </div>
+            <div class="about-card">
+                <h3>Our Approach</h3>
+                <p>{{ approach }}</p>
+                <p class="card-actions"><a href="#" class="about-card-link">Learn more →</a></p>
+                {% if histories.approach and request.user.is_staff %}
+                <details>
+                    <summary>Recent approach versions</summary>
+                    <ul>
+                        {% for h in histories.approach %}
+                        <li><small>{{ h.created_at }} — {{ h.content|truncatechars:120 }}</small></li>
+                        {% endfor %}
+                    </ul>
+                </details>
+                {% endif %}
+            </div>
+            <div class="about-card">
+                <h3>Our Team</h3>
+                <p>{{ team }}</p>
+                <p class="card-actions"><a href="#" class="about-card-link">Meet the team →</a></p>
+                {% if histories.team and request.user.is_staff %}
+                <details>
+                    <summary>Recent team versions</summary>
+                    <ul>
+                        {% for h in histories.team %}
+                        <li><small>{{ h.created_at }} — {{ h.content|truncatechars:120 }}</small></li>
+                        {% endfor %}
+                    </ul>
+                </details>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="values">
+            <h3>Core Values</h3>
+            <ul>
+                <li>Curiosity</li>
+                <li>Respect</li>
+                <li>Creativity</li>
+                <li>Inclusive Community</li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -12,56 +12,34 @@
     <div class="gallery-container">
         <div class="gallery-header">
             <h2>School Photo Gallery</h2>
-            <p>Capturing moments of learning, growth, and joy at Brilliant Minds Junior School</p>
+            <p>Capturing moments of discovery, friendship, and achievement at Smart Start Academy</p>
         </div>
         <div class="full-gallery">
-            <div class="gallery-item" data-index="0">
-                <img src="{% static 'frontend/images/school (1).jpg' %}" alt="School Photo 1">
+            {% for img in images %}
+            <div class="gallery-item" data-index="{{ forloop.counter0 }}">
+                <img src="{{ img.image.url }}" alt="{{ img.title|default:"Gallery image" }}">
+                <div class="overlay">
+                    <div class="caption-title">{{ img.title|default:"" }}</div>
+                    {% if img.caption %}
+                    <div class="caption-sub">{{ img.caption }}</div>
+                    {% endif %}
+                </div>
             </div>
-            <div class="gallery-item" data-index="1">
-                <img src="{% static 'frontend/images/school (2).jpg' %}" alt="School Photo 2">
-            </div>
-            <div class="gallery-item" data-index="2">
-                <img src="{% static 'frontend/images/school (3).jpg' %}" alt="School Photo 3">
-            </div>
-            <div class="gallery-item" data-index="3">
-                <img src="{% static 'frontend/images/school (4).jpg' %}" alt="School Photo 4">
-            </div>
-            <div class="gallery-item" data-index="4">
-                <img src="{% static 'frontend/images/school (5).jpg' %}" alt="School Photo 5">
-            </div>
-            <div class="gallery-item" data-index="5">
-                <img src="{% static 'frontend/images/school (6).jpg' %}" alt="School Photo 6">
-            </div>
-            <div class="gallery-item" data-index="6">
-                <img src="{% static 'frontend/images/school (7).jpg' %}" alt="School Photo 7">
-            </div>
-            <div class="gallery-item" data-index="7">
-                <img src="{% static 'frontend/images/school (8).jpg' %}" alt="School Photo 8">
-            </div>
-            <div class="gallery-item" data-index="8">
-                <img src="{% static 'frontend/images/school (9).jpg' %}" alt="School Photo 9">
-            </div>
-            <div class="gallery-item" data-index="9">
-                <img src="{% static 'frontend/images/school (10).jpg' %}" alt="School Photo 10">
-            </div>
-            <div class="gallery-item" data-index="10">
-                <img src="{% static 'frontend/images/school (11).jpg' %}" alt="School Photo 11">
-            </div>
-            <div class="gallery-item" data-index="11">
-                <img src="{% static 'frontend/images/school (12).jpg' %}" alt="School Photo 12">
-            </div>
+            {% empty %}
+            <p>No images available.</p>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<div class="gallery-modal">
-    <button class="modal-close">&times;</button>
-    <button class="modal-prev">&larr;</button>
+<div class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="modal-close" aria-label="Close gallery">✕</button>
+    <button class="modal-prev" aria-label="Previous image">◀</button>
     <div class="modal-content">
         <img src="" alt="Gallery Image">
     </div>
-    <button class="modal-next">&rarr;</button>
+    <button class="modal-next" aria-label="Next image">▶</button>
+    
 </div>
 {% endblock %}
 
